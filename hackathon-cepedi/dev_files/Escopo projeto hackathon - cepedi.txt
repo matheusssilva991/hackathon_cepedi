@@ -1,0 +1,13 @@
+Como é feita a coleta de consumo de água:
+	Hidrômetros manuais
+		- Consumo de água é feito por um leiturista da empresa de agua através da análise do hidrômetro.
+		- Tipo de coleta mais comum
+	Hidrômetros com telemetria 
+		- Possui transmissão por radiofrequência
+		- Dados são enviados em tempo real para as empresas
+		- Utilizado principalmente em condomínios e áreas de difícil acesso.
+		
+Idéia: Utilizar telemetria em todas as residências, criar um sistema com IA, que analise o consumo de água de cada residência levando em conta o perfil e quantidade de pessoas por residência. O sistema emitiria alertas para padrões de consumo anormais, permitiria aos consumidores acompanhar o consumo em tempo real, o gasto diário e mensal. O Sistema também permitira a empresa a visualizar o consumo agrupado por bairros e também gerar relatórios.	
+		
+links:
+	https://blog.hidrauconex.com/as-vantagens-de-se-adquirir-medicao-de-agua-por-telemetria #:~:text=Telemetria%20%C3%A9%20uma%20tecnologia%20que,o%20uso%20de%20hidr%C3%B4metros%20individualizados.

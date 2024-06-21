@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.1.1" use-changelog="false" max-obj-count="4"
+	 last-position="0,0" last-zoom="0.7"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" name-color="#000000" sql-disabled="true">
+</schema>
+
+<table name="usuario" layers="0" collapse-mode="2" max-obj-count="8" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="180" y="120"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="cpf">
+		<type name="varchar" length="11"/>
+	</column>
+	<column name="cnpj">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="email" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="senha" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="usuario_pk" type="pk-constr" table="public.usuario">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_endereco" index="6"/>
+	</customidxs>
+	<customidxs object-type="constraint">
+		<object name="endereco_fk" index="1"/>
+	</customidxs></table>
+
+<table name="endereco" layers="0" collapse-mode="2" max-obj-count="12" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="140" y="580"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="rua" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="bairro" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="cep" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="complemento" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="numero" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="cidade" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="estado" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="cad_unico">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="quantidade_pessoas" not-null="true">
+		<type name="numeric" length="3"/>
+	</column>
+	<constraint name="endereco_pk" type="pk-constr" table="public.endereco">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="endereco_possui_pessoas" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#5a16ee"
+	 src-table="public.endereco"
+	 dst-table="public.usuario"
+	 src-required="false" dst-required="false"/>
+
+<table name="dados_consumo" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1000" y="580"/>
+	<column name="id" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="ano" not-null="true">
+		<type name="numeric" length="4"/>
+	</column>
+	<column name="mes" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="dia" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="horario" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="consumo_agua_m3" not-null="true">
+		<type name="numeric" length="10"/>
+	</column>
+	<column name="padrao_consumo">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="dados_consumo_pk" type="pk-constr" table="public.dados_consumo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_endereco" index="7"/>
+	</customidxs>
+	<customidxs object-type="constraint">
+		<object name="endereco_fk" index="1"/>
+	</customidxs></table>
+
+<relationship name="endereco_tem_varios_consumos" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#33680f"
+	 src-table="public.endereco"
+	 dst-table="public.dados_consumo"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
